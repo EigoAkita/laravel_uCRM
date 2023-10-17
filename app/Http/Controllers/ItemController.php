@@ -12,7 +12,7 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
@@ -21,17 +21,17 @@ class ItemController extends Controller
 
         $items = Item::select('id', 'name', 'price', 'is_selling')->get();
 
-        return Inertia::render('Items/Index', ['items' => $items]);
+        return Inertia::render('Items/Index',['items' => $items]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
-        //
+        return Inertia::render('Items/Create');
     }
 
     /**
