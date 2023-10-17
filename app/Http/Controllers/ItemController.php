@@ -16,7 +16,12 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Items/Index');
+        // Item::all();の場合、不要なデータも全て取得してしまう
+        // Item::all();
+
+        $items = Item::select('id', 'name', 'price', 'is_selling')->get();
+
+        return Inertia::render('Items/Index', ['items' => $items]);
     }
 
     /**
