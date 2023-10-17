@@ -21,7 +21,7 @@ class ItemController extends Controller
 
         $items = Item::select('id', 'name', 'price', 'is_selling')->get();
 
-        return Inertia::render('Items/Index',['items' => $items]);
+        return Inertia::render('Items/Index', ['items' => $items]);
     }
 
     /**
@@ -42,7 +42,13 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        Item::create([
+            'name' => $request->name,
+            'memo' => $request->memo,
+            'price' => $request->price,
+        ]);
+
+        return to_route('items.index');
     }
 
     /**
